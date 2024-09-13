@@ -1,9 +1,18 @@
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publichRoutes } from '~/routes';
+import './App.css';
 function App() {
   return (
-    <div className="App">
-      <h1>react app</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publichRoutes.map((route, index) => {
+            const Page = route.component
+            return <Route key={index} path={route.path} element={<Page />} />
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
